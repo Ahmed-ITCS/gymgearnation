@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { products, Product } from '@/data/products';
 import { Input } from '@/components/ui/input';
@@ -16,7 +15,7 @@ const ProductsPage = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [inStockOnly, setInStockOnly] = useState(false);
   
-  const categories = ['gloves', 'straps', 'belts', 'sleeves', 'wraps'];
+  const categories = ['gloves', 'straps', 'belts', 'sleeves', 'wraps', 'shirts', 'trousers', 'shakers'];
   
   const handleCategoryChange = (category: string) => {
     setSelectedCategories(prev => 
@@ -27,17 +26,13 @@ const ProductsPage = () => {
   };
   
   const filteredProducts = products.filter(product => {
-    // Filter by search query
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          product.description.toLowerCase().includes(searchQuery.toLowerCase());
     
-    // Filter by price range
     const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
     
-    // Filter by category
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
     
-    // Filter by stock
     const matchesStock = !inStockOnly || product.inStock;
     
     return matchesSearch && matchesPrice && matchesCategory && matchesStock;
@@ -57,11 +52,9 @@ const ProductsPage = () => {
       <h1 className="text-4xl font-bold mb-8 text-center">Our Products</h1>
       
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Filters Sidebar */}
         <div className="w-full md:w-1/4 bg-white p-6 rounded-lg shadow-lg h-fit">
           <h2 className="text-xl font-semibold mb-4 pb-2 border-b border-gray-200">Filters</h2>
           
-          {/* Search */}
           <div className="mb-6">
             <label className="block text-sm font-medium mb-2">Search</label>
             <Input
@@ -73,7 +66,6 @@ const ProductsPage = () => {
             />
           </div>
           
-          {/* Price Range */}
           <div className="mb-6">
             <label className="block text-sm font-medium mb-2">
               Price Range: ${priceRange[0]} - ${priceRange[1]}
@@ -88,7 +80,6 @@ const ProductsPage = () => {
             />
           </div>
           
-          {/* Categories */}
           <div className="mb-6">
             <label className="block text-sm font-medium mb-2">Categories</label>
             <div className="space-y-2">
@@ -110,7 +101,6 @@ const ProductsPage = () => {
             </div>
           </div>
           
-          {/* In Stock Only */}
           <div className="mb-6">
             <div className="flex items-center">
               <Checkbox
@@ -127,7 +117,6 @@ const ProductsPage = () => {
             </div>
           </div>
           
-          {/* Reset Filters */}
           <Button
             variant="outline"
             className="w-full"
@@ -142,7 +131,6 @@ const ProductsPage = () => {
           </Button>
         </div>
         
-        {/* Products Grid */}
         <div className="w-full md:w-3/4">
           {filteredProducts.length === 0 ? (
             <div className="text-center py-12">
