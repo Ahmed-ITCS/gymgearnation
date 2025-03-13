@@ -2,7 +2,7 @@
   "name": "vite_react_shadcn_ts",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://ahmed-itcs.github.io/gymgearnation", 
+  "homepage": "https://ahmed-itcs.github.io/gymgearnation",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
