@@ -5,8 +5,7 @@
   "homepage": "https://ahmed-itcs.github.io/gymgearnation",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy",
+    "deploy": "npm run dev",
     "dev": "vite",
     "build": "vite build --base=/",
     "build:dev": "vite build --mode development",
